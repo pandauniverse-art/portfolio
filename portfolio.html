@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panda Universe - 3D Motion Graphics & Media Art Portfolio">
+    <meta name="keywords" content="3D, Motion Graphics, Cinema 4D, Octane Render, Media Art">
+    <meta name="author" content="Panda Universe">
+    <title>Panda Universe | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --hover-color: #2563eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero .bio {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll-bounce 2s ease infinite;
+        }
+
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        .scroll-indicator span {
+            font-size: 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            transform-style: preserve-3d;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: var(--bg-color);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tools {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tool-tag {
+            padding: 0.4rem 0.8rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            background: var(--card-bg);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .modal-header .tools {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .modal-media {
+            margin-bottom: 2rem;
+        }
+
+        .modal-media img,
+        .modal-media video {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .modal-media iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-profile {
+            text-align: center;
+        }
+
+        .about-profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin: 0 auto 1rem;
+            border: 4px solid var(--border-color);
+        }
+
+        .about-details h3 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-details p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-item span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 16px;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .social-link span {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 1rem;
+            }
+
+            .modal-media iframe {
+                height: 300px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">🐼</div>
+            <h1>Panda Universe</h1>
+            <p class="subtitle">3D Motion Graphics & Media Art</p>
+            <p class="bio">
+                Cinema 4D, Unreal Engine, Octane Render를 활용한<br>
+                창의적인 3D 비주얼 크리에이터입니다.<br>
+                유튜브 강의와 온라인 교육을 통해 지식을 나누고 있습니다.
+            </p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">포트폴리오 보기</a>
+                <a href="#contact" class="btn btn-secondary">연락하기</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>↓</span>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="container">
+        <div class="section-title">
+            <h2>Portfolio</h2>
+            <p>선별된 작품들을 확인해보세요</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Works</button>
+            <button class="filter-btn" data-filter="motion-graphics">Motion Graphics</button>
+            <button class="filter-btn" data-filter="media-art">Media Art</button>
+            <button class="filter-btn" data-filter="product-viz">Product Visualization</button>
+            <button class="filter-btn" data-filter="tutorial">Tutorial Projects</button>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container">
+        <div class="about-section">
+            <div class="about-content">
+                <div class="about-profile">
+                    <div class="about-profile-img">🐼</div>
+                    <h3>판다유니버스</h3>
+                </div>
+                <div class="about-details">
+                    <h3>About Me</h3>
+                    <p>
+                        3D 모션 그래픽과 미디어 아트를 전문으로 하는 크리에이터입니다. 
+                        Cinema 4D와 Octane Render를 주력으로 사용하며, Unreal Engine을 통해 
+                        실시간 렌더링 작업도 진행하고 있습니다.
+                    </p>
+                    <p>
+                        유튜브 채널 'Panda Universe'를 운영하며 4,240명의 구독자들과 
+                        3D 기술과 지식을 공유하고 있습니다. 인프런에서 C4D & Octane Render 강의를 
+                        진행하며 2,980명 이상의 수강생들을 가르쳤습니다.
+                    </p>
+
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span>🎬</span>
+                            <strong>Cinema 4D</strong>
+                        </div>
+                        <div class="skill-item">
+                            <span>✨</span>
+                            <strong>Octane Render</strong>
+                        </div>
+                        <div class="skill-item">
+                            <span>🎮</span>
+                            <strong>Unreal Engine</strong>
+                        </div>
+                        <div class="skill-item">
+                            <span>🎞️</span>
+                            <strong>After Effects</strong>
+                        </div>
+                        <div class="skill-item">
+                            <span>🎨</span>
+                            <strong>Photoshop</strong>
+                        </div>
+                        <div class="skill-item">
+                            <span>🤖</span>
+                            <strong>AI Tools</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <div class="contact-section">
+            <h2>Let's Connect</h2>
+            <p>프로젝트 의뢰나 협업 문의를 환영합니다</p>
+            <div class="social-links">
+                <a href="https://www.youtube.com/channel/UC5IeAFeihhrIjFVG44EG8pw" target="_blank" class="social-link">
+                    <span>📺</span> YouTube
+                </a>
+                <a href="https://www.behance.net/led32684792a3" target="_blank" class="social-link">
+                    <span>🎨</span> Behance
+                </a>
+                <a href="https://github.com/pandauniverse-art" target="_blank" class="social-link">
+                    <span>💻</span> GitHub
+                </a>
+                <a href="https://www.inflearn.com/users/574632/@panda3d" target="_blank" class="social-link">
+                    <span>🎓</span> 인프런
+                </a>
+                <a href="https://pandauniverse.gumroad.com/" target="_blank" class="social-link">
+                    <span>🛒</span> Gumroad
+                </a>
+                <a href="https://panda-universe.tistory.com/" target="_blank" class="social-link">
+                    <span>✍️</span> Blog
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 <strong>Panda Universe</strong> | All Rights Reserved</p>
+        <p style="margin-top: 0.5rem;">Made with passion for creative excellence</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-close" onclick="closeModal()">×</div>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script>
+        // Sample Projects Data (나중에 실제 데이터로 교체)
+        const projects = [
+            {
+                id: 1,
+                title: 'Particles Universe Media Art',
+                category: 'media-art',
+                thumbnail: 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Particles+Universe',
+                gif: 'https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Animated+GIF',
+                tools: ['Cinema 4D', 'Octane Render', 'After Effects'],
+                description: '우주를 테마로 한 파티클 미디어 아트 작품입니다. 수천 개의 파티클이 유기적으로 움직이며 아름다운 비주얼을 만들어냅니다.',
+                youtubeEmbed: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                behanceUrl: 'https://www.behance.net/gallery/example',
+                images: [
+                    'https://via.placeholder.com/1200x800/6366f1/ffffff?text=Detail+1',
+                    'https://via.placeholder.com/1200x800/8b5cf6/ffffff?text=Detail+2'
+                ]
+            },
+            {
+                id: 2,
+                title: 'Isometric Daily Life Spaces',
+                category: 'motion-graphics',
+                thumbnail: 'https://via.placeholder.com/800x600/ec4899/ffffff?text=Isometric+Rooms',
+                tools: ['Cinema 4D', 'Octane Render'],
+                description: '일상 공간을 아이소메트릭 뷰로 표현한 3D 모델링 작품입니다. 침실, 작업실, 주방 등 다양한 공간을 디테일하게 제작했습니다.',
+                images: [
+                    'https://via.placeholder.com/1200x800/ec4899/ffffff?text=Bedroom',
+                    'https://via.placeholder.com/1200x800/f43f5e/ffffff?text=Studio'
+                ]
+            },
+            {
+                id: 3,
+                title: 'McLaren 720S Visualization',
+                category: 'product-viz',
+                thumbnail: 'https://via.placeholder.com/800x600/10b981/ffffff?text=McLaren+720S',
+                tools: ['Cinema 4D', 'Octane Render', 'Photoshop'],
+                description: '맥라렌 720S의 사실적인 3D 렌더링 작품입니다. 차량의 디테일과 반사, 재질을 정밀하게 재현했습니다.',
+                sketchfabEmbed: 'https://sketchfab.com/models/example/embed',
+                images: [
+                    'https://via.placeholder.com/1200x800/10b981/ffffff?text=Front+View',
+                    'https://via.placeholder.com/1200x800/14b8a6/ffffff?text=Side+View'
+                ]
+            },
+            {
+                id: 4,
+                title: 'Mechanical Artwork Series',
+                category: 'motion-graphics',
+                thumbnail: 'https://via.placeholder.com/800x600/f59e0b/ffffff?text=Mechanical+Art',
+                gif: 'https://via.placeholder.com/800x600/eab308/ffffff?text=Rotating+Gears',
+                tools: ['Cinema 4D', 'Redshift', 'After Effects'],
+                description: '기계적 요소들이 조화롭게 움직이는 추상적 아트워크입니다. 톱니바퀴, 피스톤, 기어 등이 리듬감 있게 작동합니다.',
+                vimeoEmbed: 'https://player.vimeo.com/video/example',
+                images: [
+                    'https://via.placeholder.com/1200x800/f59e0b/ffffff?text=Mechanism+1'
+                ]
+            },
+            {
+                id: 5,
+                title: 'UE5 Natural Environment',
+                category: 'media-art',
+                thumbnail: 'https://via.placeholder.com/800x600/06b6d4/ffffff?text=UE5+Nature',
+                tools: ['Unreal Engine 5', 'Megascans', 'Quixel'],
+                description: 'Unreal Engine 5를 활용한 사실적인 자연 환경 구현입니다. 나나이트와 루멘 기술로 디테일과 라이팅을 극대화했습니다.',
+                youtubeEmbed: 'https://www.youtube.com/embed/example',
+                images: [
+                    'https://via.placeholder.com/1200x800/06b6d4/ffffff?text=Forest+Scene',
+                    'https://via.placeholder.com/1200x800/0ea5e9/ffffff?text=Water+Reflections'
+                ]
+            },
+            {
+                id: 6,
+                title: 'C4D Tutorial: Robot Arm Rigging',
+                category: 'tutorial',
+                thumbnail: 'https://via.placeholder.com/800x600/a855f7/ffffff?text=Robot+Arm',
+                tools: ['Cinema 4D', 'Xpresso'],
+                description: '로봇 팔 모델링과 리깅 튜토리얼 프로젝트입니다. 각 관절의 움직임을 Xpresso로 제어하는 방법을 다룹니다.',
+                youtubeEmbed: 'https://www.youtube.com/embed/tutorial-example',
+                gumroadUrl: 'https://pandauniverse.gumroad.com/',
+                images: [
+                    'https://via.placeholder.com/1200x800/a855f7/ffffff?text=Rigging+Setup'
+                ]
+            }
+        ];
+
+        // Render Portfolio Grid
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '';
+
+            const filteredProjects = filter === 'all' 
+                ? projects 
+                : projects.filter(p => p.category === filter);
+
+            filteredProjects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.onclick = () => openModal(project.id);
+
+                card.innerHTML = `
+                    <img src="${project.gif || project.thumbnail}" 
+                         alt="${project.title}" 
+                         class="project-thumbnail">
+                    <div class="project-info">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-tools">
+                            ${project.tools.map(tool => 
+                                `<span class="tool-tag">${tool}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Open Modal
+        function openModal(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+
+            let mediaHtml = '';
+
+            // YouTube Embed
+            if (project.youtubeEmbed) {
+                mediaHtml += `<iframe src="${project.youtubeEmbed}" allowfullscreen></iframe>`;
+            }
+
+            // Vimeo Embed
+            if (project.vimeoEmbed) {
+                mediaHtml += `<iframe src="${project.vimeoEmbed}" allowfullscreen></iframe>`;
+            }
+
+            // Sketchfab Embed
+            if (project.sketchfabEmbed) {
+                mediaHtml += `<iframe src="${project.sketchfabEmbed}" allowfullscreen></iframe>`;
+            }
+
+            // Images
+            if (project.images) {
+                project.images.forEach(img => {
+                    mediaHtml += `<img src="${img}" alt="${project.title}">`;
+                });
+            }
+
+            // GIF
+            if (project.gif && !project.youtubeEmbed) {
+                mediaHtml += `<img src="${project.gif}" alt="${project.title} GIF">`;
+            }
+
+            content.innerHTML = `
+                <div class="modal-header">
+                    <h2>${project.title}</h2>
+                    <div class="tools">
+                        ${project.tools.map(tool => 
+                            `<span class="tool-tag">${tool}</span>`
+                        ).join('')}
+                    </div>
+                    <p class="modal-description">${project.description}</p>
+                </div>
+                <div class="modal-media">
+                    ${mediaHtml}
+                </div>
+                <div class="modal-links">
+                    ${project.behanceUrl ? 
+                        `<a href="${project.behanceUrl}" target="_blank" class="btn btn-primary">
+                            Behance에서 보기
+                        </a>` : ''}
+                    ${project.gumroadUrl ? 
+                        `<a href="${project.gumroadUrl}" target="_blank" class="btn btn-secondary">
+                            Gumroad에서 구매
+                        </a>` : ''}
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Filter Buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => 
+                    b.classList.remove('active')
+                );
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                renderProjects(filter);
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Close modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initialize
+        renderProjects();
+    </script>
+</body>
+</html>
