@@ -33,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Header Navigation */
         header {
             position: fixed;
             top: 0;
@@ -79,7 +78,6 @@
             color: var(--text-color);
         }
 
-        /* Hero Section - Compact */
         .hero {
             min-height: 60vh;
             display: flex;
@@ -150,14 +148,12 @@
             border-color: var(--text-secondary);
         }
 
-        /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
-        /* Section Title */
         .section-title {
             margin-bottom: 3rem;
         }
@@ -174,7 +170,6 @@
             font-size: 1.1rem;
         }
 
-        /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -259,7 +254,6 @@
             font-weight: 500;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -364,7 +358,6 @@
             flex-wrap: wrap;
         }
 
-        /* About Section */
         .about-section {
             background: var(--card-bg);
             border-radius: 8px;
@@ -441,7 +434,6 @@
             font-weight: 600;
         }
 
-        /* Contact Section */
         .contact-section {
             text-align: center;
             padding: 4rem 2rem;
@@ -491,7 +483,6 @@
             transform: translateY(-2px);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
@@ -510,7 +501,6 @@
             color: var(--hover-color);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -547,7 +537,6 @@
     </style>
 </head>
 <body>
-    <!-- Header Navigation -->
     <header>
         <nav>
             <div class="logo">PANDA UNIVERSE</div>
@@ -559,7 +548,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section - Compact -->
     <section class="hero">
         <div class="hero-content">
             <h1>3D Motion Graphics<br>& Media Art</h1>
@@ -571,7 +559,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section id="portfolio" class="container">
         <div class="section-title">
             <h2>Featured Projects</h2>
@@ -581,7 +568,6 @@
         <div class="portfolio-grid" id="portfolioGrid"></div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="container">
         <div class="about-section">
             <div class="about-content">
@@ -627,7 +613,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="container">
         <div class="contact-section">
             <h2>Let's Connect</h2>
@@ -655,19 +640,16 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 <strong>Panda Universe</strong> | All Rights Reserved</p>
     </footer>
 
-    <!-- Modal -->
     <div class="modal" id="projectModal">
         <div class="modal-close" onclick="closeModal()">×</div>
         <div class="modal-content" id="modalContent"></div>
     </div>
 
     <script>
-        // Projects Data with YouTube/Vimeo Embeds
         const projects = [
             {
                 id: 1,
@@ -677,11 +659,15 @@
                 views: '1.5k',
                 tools: ['Cinema 4D', 'Octane Render', 'After Effects'],
                 description: '몰입형 미디어 아트 컬렉션. 다차원적 공간감을 표현한 실험적 비주얼 작업입니다.',
-                youtubeEmbed: 'https://www.youtube.com/embed/4tavRr29Fmo',
+                youtubeEmbeds: [
+                    'https://www.youtube.com/embed/4tavRr29Fmo',
+                    'https://www.youtube.com/embed/pMBceJxxi0k'
+                ],
                 behanceUrl: 'https://www.behance.net/gallery/238158467/MULTIPLE-DIMENSIONS-Immersive-Media-Art-Collection',
                 images: [
                     'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b91e11238158467.677e09f3aad34.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8e2db3238158467.677e09f3ab3e6.jpg'
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8e2db3238158467.677e09f3ab3e6.jpg',
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cf6bf4238158467.677e09f3abc54.jpg'
                 ]
             },
             {
@@ -692,11 +678,12 @@
                 views: '2.8k',
                 tools: ['Cinema 4D', 'Octane Render', 'X-Particles'],
                 description: '우주를 테마로 한 파티클 기반 미디어 아트 작품. Behance 인기 작품으로 2,798 조회수를 기록했습니다.',
-                youtubeEmbed: 'https://www.youtube.com/embed/pMBceJxxi0k',
+                vimeoEmbed: 'https://player.vimeo.com/video/929535140?h=c5db89e08c',
                 behanceUrl: 'https://www.behance.net/gallery/195040543/Particles-universe-Media-Art',
                 images: [
                     'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cf5b6d195040543.66cee41a8e3e6.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0c9bb6195040543.66cee41a8eaa8.jpg'
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0c9bb6195040543.66cee41a8eaa8.jpg',
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c47d22195040543.66cee41a8f135.jpg'
                 ]
             },
             {
@@ -706,29 +693,17 @@
                 thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/889a58163615109.6406c2a88c2cc.jpg',
                 views: '1.2k',
                 tools: ['Cinema 4D', 'Octane Render', 'Photoshop'],
-                description: '파라다이스시티 호텔의 벚꽃 시즌을 표현한 건축 비주얼라이제이션.',
-                vimeoEmbed: 'https://player.vimeo.com/video/929535140?h=c5db89e08c',
+                description: '파라다이스시티 호텔의 벚꽃 시즌을 표현한 건축 비주얼라이제이션. 핑크빛 봄의 감성과 현대적인 호텔 건축의 조화를 담았습니다.',
+                youtubeEmbed: 'https://www.youtube.com/embed/kJtE4o17MqM',
                 behanceUrl: 'https://www.behance.net/gallery/163615109/Paradise-City-Hotel-Pink-Spring-cherry-blossoms',
                 images: [
                     'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/889a58163615109.6406c2a88c2cc.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bd5d9c163615109.6406c2a88ca9b.jpg'
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bd5d9c163615109.6406c2a88ca9b.jpg',
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/91a5a8163615109.6406c2a88d0d2.jpg'
                 ]
-            },
-            {
-                id: 4,
-                title: 'Additional Project',
-                category: 'MOTION GRAPHICS',
-                thumbnail: 'https://via.placeholder.com/800x600/2563eb/ffffff?text=Project+4',
-                views: '900',
-                tools: ['Cinema 4D', 'Redshift'],
-                description: '추가 프로젝트 설명을 입력해주세요.',
-                youtubeEmbed: 'https://www.youtube.com/embed/kJtE4o17MqM',
-                behanceUrl: '#',
-                images: []
             }
         ];
 
-        // Render Portfolio Grid
         function renderProjects() {
             const grid = document.getElementById('portfolioGrid');
             grid.innerHTML = '';
@@ -762,7 +737,6 @@
             });
         }
 
-        // Open Modal
         function openModal(projectId) {
             const project = projects.find(p => p.id === projectId);
             if (!project) return;
@@ -772,17 +746,20 @@
 
             let mediaHtml = '';
 
-            // YouTube Embed
+            if (project.youtubeEmbeds) {
+                project.youtubeEmbeds.forEach(embed => {
+                    mediaHtml += `<iframe src="${embed}" allowfullscreen></iframe>`;
+                });
+            }
+
             if (project.youtubeEmbed) {
                 mediaHtml += `<iframe src="${project.youtubeEmbed}" allowfullscreen></iframe>`;
             }
 
-            // Vimeo Embed
             if (project.vimeoEmbed) {
                 mediaHtml += `<iframe src="${project.vimeoEmbed}" allowfullscreen></iframe>`;
             }
 
-            // Images
             if (project.images && project.images.length > 0) {
                 project.images.forEach(img => {
                     mediaHtml += `<img src="${img}" alt="${project.title}" loading="lazy">`;
@@ -803,7 +780,7 @@
                     ${mediaHtml}
                 </div>
                 <div class="modal-links">
-                    ${project.behanceUrl && project.behanceUrl !== '#' ? 
+                    ${project.behanceUrl ? 
                         `<a href="${project.behanceUrl}" target="_blank" class="btn btn-primary">
                             View on Behance
                         </a>` : ''}
@@ -814,14 +791,12 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Close Modal
         function closeModal() {
             const modal = document.getElementById('projectModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -832,14 +807,12 @@
             });
         });
 
-        // Close modal on ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
 
-        // Initialize
         renderProjects();
     </script>
 </body>
