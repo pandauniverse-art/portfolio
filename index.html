@@ -350,6 +350,14 @@
             margin-bottom: 1rem;
         }
 
+        .modal-media iframe {
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
         .modal-links {
             display: flex;
             gap: 1rem;
@@ -524,6 +532,10 @@
                 padding: 1rem;
             }
 
+            .modal-media iframe {
+                height: 300px;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -655,7 +667,7 @@
     </div>
 
     <script>
-        // Real Projects Data from Behance
+        // Projects Data with YouTube/Vimeo Embeds
         const projects = [
             {
                 id: 1,
@@ -664,12 +676,12 @@
                 thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b91e11238158467.677e09f3aad34.jpg',
                 views: '1.5k',
                 tools: ['Cinema 4D', 'Octane Render', 'After Effects'],
-                description: '몰입형 미디어 아트 컬렉션. 다차원적 공간감을 표현한 실험적 비주얼 작업입니다. 빛과 형태의 상호작용을 통해 추상적이면서도 몰입감 있는 경험을 제공합니다.',
+                description: '몰입형 미디어 아트 컬렉션. 다차원적 공간감을 표현한 실험적 비주얼 작업입니다.',
+                youtubeEmbed: 'https://www.youtube.com/embed/4tavRr29Fmo',
                 behanceUrl: 'https://www.behance.net/gallery/238158467/MULTIPLE-DIMENSIONS-Immersive-Media-Art-Collection',
                 images: [
                     'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b91e11238158467.677e09f3aad34.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8e2db3238158467.677e09f3ab3e6.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cf6bf4238158467.677e09f3abc54.jpg'
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8e2db3238158467.677e09f3ab3e6.jpg'
                 ]
             },
             {
@@ -679,12 +691,12 @@
                 thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cf5b6d195040543.66cee41a8e3e6.jpg',
                 views: '2.8k',
                 tools: ['Cinema 4D', 'Octane Render', 'X-Particles'],
-                description: '우주를 테마로 한 파티클 기반 미디어 아트 작품. 수천 개의 파티클이 유기적으로 움직이며 생성하는 우주적 스케일의 비주얼입니다. Behance 인기 작품으로 2,798 조회수를 기록했습니다.',
+                description: '우주를 테마로 한 파티클 기반 미디어 아트 작품. Behance 인기 작품으로 2,798 조회수를 기록했습니다.',
+                youtubeEmbed: 'https://www.youtube.com/embed/pMBceJxxi0k',
                 behanceUrl: 'https://www.behance.net/gallery/195040543/Particles-universe-Media-Art',
                 images: [
                     'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cf5b6d195040543.66cee41a8e3e6.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0c9bb6195040543.66cee41a8eaa8.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c47d22195040543.66cee41a8f135.jpg'
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0c9bb6195040543.66cee41a8eaa8.jpg'
                 ]
             },
             {
@@ -694,13 +706,25 @@
                 thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/889a58163615109.6406c2a88c2cc.jpg',
                 views: '1.2k',
                 tools: ['Cinema 4D', 'Octane Render', 'Photoshop'],
-                description: '파라다이스시티 호텔의 벚꽃 시즌을 표현한 건축 비주얼라이제이션. 핑크빛 봄의 감성과 현대적인 호텔 건축의 조화를 담았습니다.',
+                description: '파라다이스시티 호텔의 벚꽃 시즌을 표현한 건축 비주얼라이제이션.',
+                vimeoEmbed: 'https://player.vimeo.com/video/929535140?h=c5db89e08c',
                 behanceUrl: 'https://www.behance.net/gallery/163615109/Paradise-City-Hotel-Pink-Spring-cherry-blossoms',
                 images: [
                     'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/889a58163615109.6406c2a88c2cc.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bd5d9c163615109.6406c2a88ca9b.jpg',
-                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/91a5a8163615109.6406c2a88d0d2.jpg'
+                    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bd5d9c163615109.6406c2a88ca9b.jpg'
                 ]
+            },
+            {
+                id: 4,
+                title: 'Additional Project',
+                category: 'MOTION GRAPHICS',
+                thumbnail: 'https://via.placeholder.com/800x600/2563eb/ffffff?text=Project+4',
+                views: '900',
+                tools: ['Cinema 4D', 'Redshift'],
+                description: '추가 프로젝트 설명을 입력해주세요.',
+                youtubeEmbed: 'https://www.youtube.com/embed/kJtE4o17MqM',
+                behanceUrl: '#',
+                images: []
             }
         ];
 
@@ -748,8 +772,18 @@
 
             let mediaHtml = '';
 
+            // YouTube Embed
+            if (project.youtubeEmbed) {
+                mediaHtml += `<iframe src="${project.youtubeEmbed}" allowfullscreen></iframe>`;
+            }
+
+            // Vimeo Embed
+            if (project.vimeoEmbed) {
+                mediaHtml += `<iframe src="${project.vimeoEmbed}" allowfullscreen></iframe>`;
+            }
+
             // Images
-            if (project.images) {
+            if (project.images && project.images.length > 0) {
                 project.images.forEach(img => {
                     mediaHtml += `<img src="${img}" alt="${project.title}" loading="lazy">`;
                 });
@@ -769,9 +803,10 @@
                     ${mediaHtml}
                 </div>
                 <div class="modal-links">
-                    <a href="${project.behanceUrl}" target="_blank" class="btn btn-primary">
-                        View on Behance
-                    </a>
+                    ${project.behanceUrl && project.behanceUrl !== '#' ? 
+                        `<a href="${project.behanceUrl}" target="_blank" class="btn btn-primary">
+                            View on Behance
+                        </a>` : ''}
                 </div>
             `;
 
